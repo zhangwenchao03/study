@@ -77,3 +77,5 @@ CopyWebpackPlugin|将文件或者文件夹拷贝到输出目录
 HtmlWebpackPlugin|创建html文件去承载输出的bundle
 UglifyjsWebpackPlugin|压缩js
 ZipWebpackPlugin|将打包出的资源生成一个zip压缩包
+### Mode 指定构建环境 
+development production none 前两个设置process.env.NODE_ENV 并开启一些插件 none不做任何优化
