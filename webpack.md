@@ -58,7 +58,14 @@ module: {
   rules: [
     {
       test: /\.js$/,   // test指定匹配规则
-      use: 'babel-loader', // use指定使用的loader的名称
+      use: 'babel-loader', // use指定使用的loader的名称 一个传字符串 多个传数组
+    },
+    {
+      test: /.css$/,
+      use: [
+        'style-loader',
+        'css-loader'      // loader 是链式调用 从右往左 先执行css-loader 解析css 然后把解析好的样式传递给style-loader
+      ]
     }
   ]
 }
@@ -80,8 +87,8 @@ ZipWebpackPlugin|将打包出的资源生成一个zip压缩包
 ### Mode 指定构建环境 
 development production none 前两个设置process.env.NODE_ENV 并开启一些插件 none不做任何优化
 
-### 配置babel  .babelrc文件
-
+###  解析es6 react jsx
+配置babel  .babelrc文件
 配置presets(相当于一系列babel plugin的集合) 与 plugins(每个插件相当于一个功能)
 
 例如 配置es6 和react jsx的解析
@@ -104,3 +111,49 @@ rules: [
  }
 ]
 ```
+### 解析css
+css-loader 用于加载.css文件 转换成commonjs对象
+styles-loader 将样式通过<style>标签插入head中
+less-loader sass-loader 将less sass转换为.css
+解析less
+```
+ {
+   test: /.less$/,
+   use: [
+     'styles-loader',
+     'css-loader',
+     'less-loader'
+   ]
+ }
+```
+### 解析图片和字体
+  解析文件用file-loader
+ 解析图片
+ ```
+ {
+   test: /.(png|jpg|gif|jpeg)$/,
+   use: 'file-loader'
+ }
+ ```
+  解析字体文件
+ ```
+ {
+   test: /.(woff|woff2|eot|ttf|otf)$/,
+   use: 'file-loader'
+ }
+ ```
+ url-loader 也可以处理图片和字体 内部也是用的file-loader,可以设置较小的资源自动base64
+  解析图片
+ ```
+ {
+   test: /.(png|jpg|gif|jpeg)$/,
+   use: [
+    {
+      loader: 'url-loader',
+      options: {
+        limit: 10240   //图片小于10k 就会自动把图片转为base64 打包完就不会把图片直接打包到文件里 没有单独的图片
+      }
+    }
+   ]
+ }
+ ```
