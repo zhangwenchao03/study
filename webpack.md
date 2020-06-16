@@ -79,3 +79,28 @@ UglifyjsWebpackPlugin|压缩js
 ZipWebpackPlugin|将打包出的资源生成一个zip压缩包
 ### Mode 指定构建环境 
 development production none 前两个设置process.env.NODE_ENV 并开启一些插件 none不做任何优化
+
+### 配置babel  .babelrc文件
+
+配置presets(相当于一系列babel plugin的集合) 与 plugins(每个插件相当于一个功能)
+
+例如 配置es6 和react jsx的解析
+解析es6 需要安装 @babel/core @babel/preset-env babel-loader 
+解析react jsx 需要安装 @babel/preset-react
+```
+{
+   "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+   ]
+}
+```
+然后webpack module添加
+```
+rules: [
+ {
+   test: /.js$/,
+   use: 'babel-loader'
+ }
+]
+```
