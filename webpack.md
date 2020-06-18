@@ -158,6 +158,16 @@ less-loader sass-loader 将less sass转换为.css
  }
  ```
  ### webpack 文件监听
- 发现源码变化时 自动重新构建 ，两种方式开启监听
+ 发现源码变化时 自动重新构建输出文件 ，两种方式开启监听
  + 启动webpack命令时 带上 --watch 参数
  + webpack.config.js 中配置 watch: true
+ 缺点是重新构建以后 需要手动刷新浏览器 不能热更新
+ ### 热更新 webpack-dev-server 开发环境使用
+WDS
+不用手动刷新浏览器
+不输出文件 而是放在内存中
+通常结合HotModuleReplacementPlugin插件 一起实现热更新
+热更新原理：
+初始化 ：webpack Compile 将js编译成Bundle =》 Bundle server： 提供Bundle文件在浏览器的访问
+更新：webpack Compile 将js编译成Bundle =》 HMR server：将热更新的文件输出给 HMR Runtime
+     HMR Runtime: 注入浏览器 更新文件的变化
