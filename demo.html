@@ -1,0 +1,119 @@
+<html>
+  <head>
+		<style>
+			.tab-head {
+				display: flex;
+				width: fit-content;
+				border-right: solid 1px;
+			}
+			.tab-head div {
+				border-top: solid blue 1px;
+				border-left: solid blue 1px;
+			}
+			.tab-content div {
+				display: none;
+			}
+			.selected {
+				background-color: blue;
+			}
+			.show {
+				display:block !important;
+			}
+
+			.first-div {
+				width: 100px;
+				height: 100px;
+				position: absolute;
+				background-color:blueviolet;
+				z-index: 2;
+			}
+			.second-div {
+				width: 200px;
+				height: 200px;
+				background-color: yellow;
+				position: absolute;
+				top: 400px;
+				left: 400px
+			}
+		</style>
+	</head>
+	<body>
+		<div>
+			<div class="tab-head">
+				<div class="selected" onclick="changeTab(this)">租户</div>
+				<div onclick="changeTab(this)">机构</div>
+				<div onclick="changeTab(this)">用户</div>
+			</div>
+			<div class="tab-content">
+				<div class="show">tab-1</div>
+				<div>tab-2</div>
+				<div>tab-3</div>
+			</div>
+		</div>
+		<div class="first-div">
+
+		</div>
+		<div class="second-div">
+
+		</div>
+		<script>
+			const tabs = document.getElementsByClassName('tab-head')[0].getElementsByTagName('div');
+			const contents = document.getElementsByClassName('tab-content')[0].getElementsByTagName('div');
+			function changeTab(tab) {
+				for (var i=0; i<tabs.length; i++) {
+					if (tab === tabs[i]) {
+						tabs[i].classList.add('selected')
+						contents[i].classList.add('show')
+					} else {
+						tabs[i].classList.remove('selected')
+						contents[i].classList.remove('show')
+					}
+				}
+			}
+			var preLeft = 0;
+			var preTop = 0;
+			var mousedownLeft = 0;
+			var mousedownTop = 0;
+			var start = false;
+			var firstDiv = document.getElementsByClassName('first-div')[0]
+			var secondDiv = document.getElementsByClassName('second-div')[0]
+			var secLeft = secondDiv.offsetLeft;
+			var secTop = secondDiv.offsetTop;
+
+			var firstWidth = firstDiv.clientWidth;
+			var firstHeight = firstDiv.clientHeight;
+			var secWidth = secondDiv.clientWidth;
+			var secHeight = secondDiv.clientHeight;
+
+			firstDiv.addEventListener('mousedown', function(e){
+				start = true;
+				preLeft = firstDiv.offsetLeft;
+				preTop = firstDiv.offsetTop;
+				mousedownLeft = e.clientX;
+				mousedownTop = e.clientY;
+			})
+			firstDiv.addEventListener('mouseup', function(){
+				start = false;
+			})
+			window.addEventListener('mousemove', function(e){
+				if (!start) return;
+				var curX = e.clientX - mousedownLeft + preLeft;
+				var curY = e.clientY - mousedownTop + preTop;
+				firstDiv.style.left = curX;
+				firstDiv.style.top = curY;
+				if (curX > secLeft && curX < secLeft + secWidth - firstWidth && curY > secTop && curY < secTop + secHeight - firstHeight) {
+					secondDiv.style.backgroundColor = 'red';
+				} else {
+					secondDiv.style.backgroundColor = 'yellow';
+				}
+			})
+			// secondDiv.addEventListener('mouseenter', function(){
+			// 	secondDiv.style.backgroundColor = 'red';
+			// })
+			// secondDiv.addEventListener('mouseleave', function(){
+			// 	secondDiv.style.backgroundColor = 'yellow';
+			// })
+
+		</script>
+	</body>
+</html>
