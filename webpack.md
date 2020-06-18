@@ -157,3 +157,7 @@ less-loader sass-loader 将less sass转换为.css
    ]
  }
  ```
+ ### webpack 文件监听
+ 发现源码变化时 自动重新构建 ，两种方式开启监听
+ + 启动webpack命令时 带上 --watch 参数
+ + webpack.config.js 中配置 watch: true
