@@ -166,8 +166,33 @@ less-loader sass-loader 将less sass转换为.css
 WDS
 + 不用手动刷新浏览器
 + 不输出文件 而是放在内存中
-通常结合HotModuleReplacementPlugin插件 一起实现热更新 
+通常结合HotModuleReplacementPlugin插件 一起实现热更新
 #### 热更新原理：
 + 初始化 ：webpack Compile 将js编译成Bundle =》 Bundle server： 提供Bundle文件在浏览器的访问
 + 更新：webpack Compile 将js编译成Bundle =》 HMR server：将热更新的文件输出给 HMR Runtime
      HMR Runtime: 注入浏览器 更新文件的变化
+### 文件指纹
+打包后的文件后缀，通常做版本管理 没有修改的文件不用更新 
+#### 文件指纹大致有三种
++ Hash: 和整个项目的构建相关， 只要项目文件有修改 ，整个项目构建的Hash值就会更改
++ Chunkhash: 和webpack打包的chunk有关， 不同的entry会生成不同的chunkhash值 js常用 output的filename里
++ Contenthash: 根据文件内容来定义hash,文件内容不变 ， 则contenthash不变 css常用 
+图片字体文件的指纹 设置fileloader 或者url-loader的name option参数的name
+```
+  use: [{
+    loader: 'file-loader',
+    options: {
+      name: 'img/[name][hash:8][ext]'
+    }
+  }]
+```
+占位符名称|含义
+--|--
+[ext]|资源后缀名
+[name]|文件名称
+[path]|文件相对路径
+[folder]|文件所在文件夹
+[contenthash]|文件的内容hash,默认md5生成
+[hash]|文件内容的hash,,默认md5生成
+[emoji]|一个随机的指代文件内容的emoji
+
