@@ -175,7 +175,7 @@ WDS
 打包后的文件后缀，通常做版本管理 没有修改的文件不用更新 
 #### 文件指纹大致有三种
 + Hash: 和整个项目的构建相关， 只要项目文件有修改 ，整个项目构建的Hash值就会更改
-+ Chunkhash: 和webpack打包的chunk有关， 不同的entry会生成不同的chunkhash值 js常用 output的filename里
++ Chunkhash: 和webpack打包的chunk有关， 不同的entry会生成不同的chunkhash值 js常用 output的filename里，不能和热更新一起使用的，所以是生产环境配置
 + Contenthash: 根据文件内容来定义hash,文件内容不变 ， 则contenthash不变 css常用 
 图片字体文件的指纹 设置fileloader 或者url-loader的name option参数的name
 ```
