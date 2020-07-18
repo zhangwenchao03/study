@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>fit Input</title>
+  <style>
+    #input {
+      width: 200px;
+    }
+    #content {
+      padding-left: 5px
+    }
+    #content li {
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <input id="input" />
+  <ul id="content">
+  </ul>
+  <script>
+    // const totalArray = ["西科大","川大","电子科技大学","川音","北大","清华","复旦","上海交大 ","北邮","西石油"]
+    // var timer = null;
+    // function handleChange(e){
+    //   document.getElementById('content').innerHTML = ''
+    //   var value = e.value;
+    //   var arrLi = [];
+    //   totalArray.forEach(function(item){
+    //     if (item.indexOf(value) > -1) {
+    //       arrLi.push("<li>"+item+"</li>")
+    //     }
+    //   })
+    //   document.getElementById("content").innerHTML=arrLi.join('')
+    // };
+    var arr = ['a','apple','abandon','bilibili','beep','before','become','being','highmaintains','by','bye','banana']
+    var inpu = document.getElementById("input")
+    var ul = document.getElementById("content")
+    input.addEventListener('input', function(event){
+
+    var _value = event.target.value.trim()
+
+    if(_value){
+
+        autoComplete(_value, arr)
+    }
+
+    else{
+
+        ul.innerHTML = ''
+    }
+
+})
+
+
+function autoComplete(str, arr){
+
+    var lis = []
+
+    arr.forEach( (word)=>{
+
+        if(word.startsWith(str)){
+
+            lis.push('<li>' + word + '</li>')
+        }
+    })
+
+    ul.innerHTML = lis.join('')
+}
+
+function addToInput(li){
+
+    var _txt = li.innerText
+
+    input.value = _txt
+}
+
+ul.addEventListener('click', function(event){
+
+    if(event.target.tagName.toLowerCase() === 'li'){
+
+        addToInput(event.target)
+    }
+})
+  </script>
+</body>
+</html>
