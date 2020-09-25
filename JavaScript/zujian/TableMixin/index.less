@@ -1,0 +1,161 @@
+@import "~@/theme/theme.less";
+
+.topTableTitle {
+  color: @textColor;
+  font-size: 14px;
+  font-weight: bold;
+  height: 40px;
+  padding: 0 15px;
+  line-height: 40px;
+  border: 1px solid @borderColor;
+  border-bottom: none;
+}
+
+.tableContainer {
+  display: flex;
+  flex: 1;
+  width: 100%;
+  .tableStyle {
+    width: 100%;
+
+    .singleSelect {
+      &>td {
+        background: #5063c230 !important;
+      }
+    }
+
+    :global {
+      .ant-spin-nested-loading {
+        height: 100%;
+      }
+
+      .ant-spin-container {
+        height: 100%;
+      }
+
+      .ant-table {
+        border: 1px solid #dadce6;
+        border-radius: 2px;
+        height: 100%;
+      }
+
+      .ant-table-default {
+        height: auto;
+      }
+
+      .ant-table-empty {
+        height: 100%;
+      }
+
+      .ant-table-header {
+        background-color: #ffffff;
+      }
+
+      .ant-table-thead>tr>th {
+        font-weight: normal;
+        background: #ffffff;
+      }
+
+      .ant-table-thead>tr>th,
+      .ant-table-tbody>tr>td {
+        padding: 10px 19px;
+        white-space: nowrap;
+      }
+
+      .ant-table-tbody>tr>td {
+        border-bottom: none;
+        white-space: nowrap;
+      }
+
+      .ant-table-tbody>tr {
+        &:nth-child(even) {
+          background-color: #f6f8fb;
+        }
+      }
+
+      .ant-table-pagination {
+        margin: 15px 0 15px 0;
+      }
+
+      .ant-pagination-total-text {
+        font-size: 14px;
+        color: #3d404d;
+        height: 30px;
+        margin-right: 20px;
+      }
+
+      .ant-pagination-prev,
+      .ant-pagination-next,
+      .ant-pagination-jump-prev,
+      .ant-pagination-jump-next {
+        height: 30px;
+        line-height: 28px;
+        min-width: 30px;
+      }
+
+      .ant-pagination-item {
+        height: 30px;
+        min-width: 30px;
+      }
+
+      .ant-pagination-item a {
+        color: @themeColor;
+      }
+
+      .ant-pagination-item-active {
+        background-color: @themeColor;
+        font-weight: normal;
+      }
+
+      .ant-pagination-item-active a {
+        color: #ffffff;
+      }
+
+      .ant-pagination-options {
+        margin-left: 30px;
+      }
+
+      .ant-pagination-options-quick-jumper {
+        height: 30px;
+        line-height: 30px;
+      }
+
+      .ant-pagination-options-quick-jumper input {
+        height: 30px;
+      }
+
+      .ant-table-thead>tr>th:hover{
+        background: #f2f2f2;
+      }
+
+      .ant-table-placeholder {
+        border-top: 0;
+        border-bottom: 0;
+        position: absolute;
+        top: calc(50% - 107px);
+        left: calc(50% - 32px);
+      }
+
+      .ant-table-tbody > tr.ant-table-row-selected td {
+        background: none;
+      }
+
+      .react-resizable {
+        position: relative;
+        background-clip: padding-box;
+      }
+
+      .react-resizable-handle {
+        position: absolute;
+        width: 10px;
+        height: 100%;
+        bottom: 0;
+        right: -5px;
+        cursor: col-resize;
+        z-index: 1;
+      }
+
+    }
+  }
+
+}
