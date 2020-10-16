@@ -336,3 +336,92 @@ function add(a,b){
   };
   return res.reverse().join("");
 }
+// 冒泡排序
+function bubbleSort(arr) {
+  var len = arr.length;
+  for (var i = 0; i < len - 1; i++) {
+      for (var j = 0; j < len - 1 - i; j++) {
+          if (arr[j] > arr[j+1]) {        // 相邻元素两两对比
+              var temp = arr[j+1];        // 元素交换
+              arr[j+1] = arr[j];
+              arr[j] = temp;
+          }
+      }
+  }
+  return arr;
+}
+// 选择排序
+function selectionSort(arr) {
+  var len = arr.length;
+  var minIndex, temp;
+  for (var i = 0; i < len - 1; i++) {
+      minIndex = i;
+      for (var j = i + 1; j < len; j++) {
+          if (arr[j] < arr[minIndex]) {     // 寻找最小的数
+              minIndex = j;                 // 将最小数的索引保存
+          }
+      }
+      temp = arr[i];
+      arr[i] = arr[minIndex];
+      arr[minIndex] = temp;
+  }
+  return arr;
+}
+
+// 插入排序
+function insertSort(arr) {
+  var len = arr.length;
+  var temp;
+  for (var i = 0; i < len - 1; i++) {
+      for (var j = i + 1; j > 0 ; j--) {
+          if (arr[j] < arr[j-1]) {
+              tem = arr[j];
+              arr[j] = arr[j-1]
+              arr[j-1] = tem;
+          }
+      }
+  }
+  return arr;
+}
+
+
+function swap(items, firstIndex, secondIndex){
+  var temp = items[firstIndex];
+  items[firstIndex] = items[secondIndex];
+  items[secondIndex] = temp;
+}
+
+function partition(items, left, right) {
+  var pivot = items[Math.floor((right + left) / 2)],
+      i = left,
+      j = right;
+  while (i <= j) {
+      while (items[i] < pivot) {
+          i++;
+      }
+      while (items[j] > pivot) {
+          j--;
+      }
+      if (i <= j) {
+          swap(items, i, j);
+          i++;
+          j--;
+      }
+  }
+  return i;
+}
+
+function quickSort(items, left, right) {
+  var index;
+  if (items.length > 1) {
+      index = partition(items, left, right);
+      if (left < index - 1) {
+          quickSort(items, left, index - 1);
+      }
+      if (index < right) {
+          quickSort(items, index, right);
+      }
+  }
+  return items;
+}
+
