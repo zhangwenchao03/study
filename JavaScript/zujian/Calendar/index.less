@@ -1,0 +1,136 @@
+.calendar {
+    background-color: #fff;
+    padding: 5px 15px 15px 15px;
+    :global {
+        .ant-radio-group {
+            display: none;
+        }
+        .ant-fullcalendar-header {
+            text-align: left !important;
+            margin-left: 180px;
+            .ant-select {
+                color: #1F2127 !important;
+            }
+        }
+        .ant-fullcalendar {
+            background-color: #F6F8FA;
+            border: none !important;
+            border-radius: 5px;
+            padding: 15px;
+        }
+        thead {
+            border-bottom: 1px solid lightgray;
+            background-color: #fff;
+            font-size: 14px;
+            color: #3D404D;
+        }
+        tr {
+            height: 32px;
+            line-height: 32px;
+        }
+        tbody {
+            td:hover {
+                cursor: pointer;
+            }
+        }
+        .ant-fullcalendar-column-header {
+            font-size: 13px;
+        }
+        .ant-fullcalendar-cell {
+            text-align: center;
+        }
+        .gDStyle {
+            height:20px;
+            line-height: 20px;
+            font-size: 16px;
+            color: #1F2127;
+        }
+        .lS {
+            height:20px;
+            line-height: 20px;
+            font-size: 12px;
+            color: #B3B6C7;
+        }
+        .festivalStyle {
+            font-size: 12px;
+            color: #5063C2;
+        }
+        .ant-fullcalendar-calendar-body {
+            padding: 0 !important;
+        }
+        .day-item {
+            width: 70px;
+            display: inline-block;
+            position: relative;
+            &:hover {
+                background: #EDF1F5;
+                border-radius: 1px;
+            }
+        }
+        .calendarCell {
+            padding: 10px 0;
+            &.grayBack {
+                background: #EDF1F5;
+                border-radius: 1px;
+            }
+        }
+        .select {
+            background: #A9B9CA;
+            border-radius: 1px;
+            color: #FFFFFF !important;
+            .gDStyle {
+                color: #FFFFFF !important;
+            }
+            .lS {
+                color: #FFFFFF !important;
+            }
+            &:hover {
+                background: #A9B9CA;
+            }
+            .festivalStyle {
+                color: #FFFFFF !important;
+            }
+            .grayBack {
+                background: #A9B9CA;
+                border-radius: 1px;
+            }
+        }
+        .red-tips {
+            background: #FF6759;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            margin-left: 10px;
+        }
+        .status {
+            float: right;
+            position: absolute;
+            right: 5px;
+            top: -4px;
+            font-size: 10px;
+            &.status_1 {
+                color: #63AA8B;
+            }
+            &.status_2 {
+                color: #F8731B;;
+            }
+        }
+    }
+}
+.calendarContainer {
+    position: relative;
+    .prevMonth {
+        position: absolute;
+        top: 70px;
+        left: 40px;
+        color: #C3C7D9;
+        cursor: pointer;
+    }
+    .nextMonth {
+        position: absolute;
+        top: 70px;
+        right: 40px;
+        color: #C3C7D9;
+        cursor: pointer;
+    }
+}
